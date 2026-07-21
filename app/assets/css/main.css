@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Map semantic utilities (bg-surface, text-ink, ...) to runtime CSS vars.
+   `inline` keeps utilities pointing at the var so theme swaps are dynamic. */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-card: var(--surface-card);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+}
+
+:root {
+  color-scheme: light;
+  --surface: #f8fafc;
+  --surface-card: #ffffff;
+  --ink: #0f172a;
+  --ink-muted: #64748b;
+  --line: #e2e8f0;
+  --brand: #dc2626;
+}
+
+/* Auto dark theme from OS preference, no JS, no per-element dark: classes */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --surface: #0f172a;
+    --surface-card: #1e293b;
+    --ink: #f1f5f9;
+    --ink-muted: #94a3b8;
+    --line: #334155;
+    --brand: #f87171;
+  }
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+}
